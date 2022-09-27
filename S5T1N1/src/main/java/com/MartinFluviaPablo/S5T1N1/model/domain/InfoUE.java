@@ -20,7 +20,6 @@ public class InfoUE {
         );
     }
 
-
     public boolean isMember(String pais){
         return  països.stream().anyMatch(s -> s.equalsIgnoreCase(pais));
     }
