@@ -1,6 +1,6 @@
-package com.MartinFluviaPablo.S5T1N1.model.dto;
+package com.martinfluviapablo.s5t1n1.model.dto;
 
-public class SucursalDTO {
+public class SucursalDto {
 
     private Integer pk_SucursalID;
 

@@ -1,4 +1,4 @@
-package com.MartinFluviaPablo.S5T1N1;
+package com.martinfluviapablo.s5t1n1;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
