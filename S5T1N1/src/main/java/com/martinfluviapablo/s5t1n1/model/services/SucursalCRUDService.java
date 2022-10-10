@@ -49,7 +49,7 @@ public class SucursalCRUDService { //suggested: here conversion Sucursal <-> Suc
      * @param dto
      * @return
      */
-    public SucursalDto update(SucursalDto dto){
+    public SucursalDto replace(SucursalDto dto){
         Integer id = dto.getPk_SucursalID();
         return  repository.findById(id)
                 .map(oldUpdatable -> {

@@ -13,9 +13,8 @@ import java.util.Objects;
 @ToString
 public class SucursalDto {
 
-    //TODO: test if this class needs to be a bean for be correctly validated
-
     //TODO: define constraints for de id (in function of the end-points)
+
     private Integer pk_SucursalID;
 
     @NotBlank(message = "El nom ha de tenir almenys 1 caràcter.")
