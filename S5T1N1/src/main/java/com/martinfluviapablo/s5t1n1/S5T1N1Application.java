@@ -2,6 +2,7 @@ package com.martinfluviapablo.s5t1n1;
 
 import com.martinfluviapablo.s5t1n1.model.domain.Sucursal;
 import com.martinfluviapablo.s5t1n1.model.dto.SucursalDto;
+import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -26,23 +27,10 @@ public class S5T1N1Application {
 	@Bean
 	public CommandLineRunner run(ApplicationContext context){
 		return args -> {
-			//Arrays.stream(context.getBeanDefinitionNames())
-			//		.sorted().forEach(s -> log.info(s));
-
-			//Sucursal sucursal = (Sucursal) context.getBean("sucursal");
-			//SucursalDto dto = (SucursalDto) context.getBean("dto");
+			/*
+			TODO: delete after all tests
+			 */
 		};
 	}
 
-	@Bean("sucursal")
-	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-	public Sucursal sucursalBean(){
-		return new Sucursal();
-	}
-
-	@Bean("dto")
-	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-	public SucursalDto sucursalDtoBean(){
-		return new SucursalDto();
-	}
 }

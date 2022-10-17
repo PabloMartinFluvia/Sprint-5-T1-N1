@@ -8,6 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface SucursalRepository extends JpaRepository<Sucursal,Integer> {
-
     Optional<Sucursal> findByNomSucursalAndPaisSucursal(String nomSucursal, String paisSucursal);
 }

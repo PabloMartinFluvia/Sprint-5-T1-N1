@@ -8,7 +8,7 @@ public class ExceptionManager {
 
     /*
     TODO:
-        Manage DataConflictiveException
+        Manage DataConflictException
         Manage SucursalNotFoundException
         Manage general exception / Critical exception (500)
         Errors due @Valid wrong should be managed here?

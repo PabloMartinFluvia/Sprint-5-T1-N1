@@ -10,25 +10,22 @@ import java.util.List;
 @Service
 public class UEService {
 
-    private InfoUE ueMembers;
+    private final InfoUE ueMembers;
 
     @Autowired
     public UEService(InfoUE ueMembers) {
         this.ueMembers = ueMembers;
     }
 
-    public SucursalDto setComunitaryInfo(SucursalDto dto){
+    public void setComunitaryInfo(SucursalDto dto){
         if(ueMembers.isMember(dto.getPaisSucursal())){
             dto.setTipusSucursal("UE");
         }else{
             dto.setTipusSucursal("Fora UE");
         }
-        return dto;
     }
 
-    public List<SucursalDto> setComunitaryInfo(List<SucursalDto> dtos){
-        //TODO: check if the previous function could act as a consumer
+    public void setComunitaryInfo(List<SucursalDto> dtos){
         dtos.forEach(this::setComunitaryInfo);
-        return dtos;
     }
 }

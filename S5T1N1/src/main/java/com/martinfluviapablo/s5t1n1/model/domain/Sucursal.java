@@ -3,10 +3,9 @@ package com.martinfluviapablo.s5t1n1.model.domain;
 import lombok.*;
 import org.hibernate.Hibernate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 import java.util.Objects;
 
 //@Data -> could cause performance problems
@@ -14,7 +13,8 @@ import java.util.Objects;
 @Setter
 @ToString
 @RequiredArgsConstructor //TODO: check @RequiredArgsConstructor is enough
-@Entity(name = "sucursals")
+@Entity
+@Table(name = "sucursals")
 public class Sucursal { // suggested: only used in repository layer
 
     @Id
@@ -22,10 +22,10 @@ public class Sucursal { // suggested: only used in repository layer
     @Column(name = "sucursal_id")
     private Integer pk_SucursalID;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 65)
     private String nomSucursal;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 45)
     private String paisSucursal;
 
     @Override
