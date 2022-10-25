@@ -1,0 +1,24 @@
+<div th:fragment="inputs_sucursal(path, verb_http)">
+	<!-- in this form data validation will be done on server layer -->
+	<form th:action="@{${path}}" th:object="${sucursal}" th:method="${verb_http}">
+		<input type="hidden" th:field="*{pk_SucursalID}" th:value="*{pk_SucursalID}">
+		<p>
+			<label> Nom de la sucursal:<br/>
+				<input type="text" th:field="*{nomSucursal}" th:value="*{nomSucursal}" />
+			</label><br/>
+			<span th:if="${#fields.hasErrors('nomSucursal')}" th:errors="*{nomSucursal}"></span>
+		</p>
+		<p>
+			<label> País de la sucursal:<br/>
+				<input type="text" th:field="*{paisSucursal}" th:value="*{paisSucursal}"/>
+			</label><br/>
+			<span th:if="${#fields.hasErrors('paisSucursal')}" th:errors="*{paisSucursal}"></span>
+		</p>
+		<br/>
+		<div>
+			<input type="submit" value="GUARDAR SUCURSAL">
+			<input type="reset" value="BORRAR">
+		</div>
+	</form>
+</div>
+

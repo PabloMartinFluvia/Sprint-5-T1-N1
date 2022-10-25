@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ca" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>CONSULTES</title>
+</head>
+<body>
+	<h1>LLISTAT SUCURSALS: </h1>
+	<p th:text="'Número de sucursals trovades: '+${total}" th:if="${total}"></p>
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>NOM</th>
+				<th>PAÍS</th>
+				<th>PAÍS MEMBRE UE</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="sucursal: ${resultat}">
+				<td th:text="${sucursal.pk_SucursalID}"></td>
+				<td th:text="${sucursal.nomSucursal}"></td>
+				<td th:text="${sucursal.paisSucursal}"></td>
+				<td th:text="${sucursal.tipusSucursal}"></td>
+				<td>
+					<a th:href="@{/editar/{id}(id=${sucursal.pk_SucursalID})}"><button>EDITAR SUCURSAL</button></a>
+				</td>
+				<td>
+					<!-- form to force "delete" http request -->
+					<form th:action="@{/sucursals/delete/{id}(id=${sucursal.pk_SucursalID})}" th:method="delete">
+						<input type="submit" value="ELIMINAR SUCURSAL">
+					</form>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p th:text="${inexistent}?:''"></p>
+	<p th:text="${delete_ok}?:''"></p>
+	<br />
+	<br />
+	<footer th:replace="components/footer :: peu_de_pagina"></footer>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ca" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Consulta Sucursal</title>
+</head>
+<body>
+	<h1>REALITZA LA TEVA CONSULTA:</h1>
+	<a href="/sucursals/getAll">
+		<button>TOTES LES SUCURSALS</button>
+	</a>
+	<br/>
+    <br/> <!-- solve with padding css -->
+	<br/>
+
+	<!-- input value passed as parameter (see below after code) -->
+	<!-- in this form data validation is done on client layer -->
+	<form action="#" method="get" th:action="@{/buscar/oneId}">
+		<label> ID de la sucursal:<br/>
+			<input th:min="#{id.min}" th:name="id" type="number"/>
+		</label>
+		<br/>
+		<br/>
+		<input type="submit" value="BUSCAR SUCURSAL"/>
+	</form>
+	
+	<br/>
+	<br/>
+	<footer th:replace="components/footer :: peu_de_pagina"></footer>
+</body>
+</html>
