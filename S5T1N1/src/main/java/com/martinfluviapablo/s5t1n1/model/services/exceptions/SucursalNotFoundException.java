@@ -8,15 +8,15 @@ public class SucursalNotFoundException extends RuntimeException implements Custo
 
     private static final String DESCRIPTION = "Not Found Exception (404)";
 
-    private final String CAUSE;
+    private final String detail;
 
     public SucursalNotFoundException(String detail) {
         super(DESCRIPTION + ". " + detail);
-        this.CAUSE = detail;
+        this.detail = detail;
     }
 
     @Override
-    public String getCAUSE() {
-        return CAUSE;
+    public String getDetail(){
+        return detail;
     }
 }

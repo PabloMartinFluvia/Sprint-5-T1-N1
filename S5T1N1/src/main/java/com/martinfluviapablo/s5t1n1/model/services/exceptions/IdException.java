@@ -8,15 +8,17 @@ public class IdException extends IllegalArgumentException implements CustomExcep
 
     private static final String DESCRIPTION = "Unprocessable Entity Exception (422)";
 
-    private final String CAUSE;
+    private final String detail;
 
     public IdException(String detail) {
         super(DESCRIPTION + ". " + detail);
-        this.CAUSE = detail;
+        this.detail = detail;
     }
 
     @Override
-    public String getCAUSE() {
-        return CAUSE;
+    public String getDetail(){
+        return detail;
     }
+
+
 }

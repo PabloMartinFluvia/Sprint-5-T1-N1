@@ -8,15 +8,15 @@ public class DataConflictException extends RuntimeException implements CustomExc
 
     private static final String DESCRIPTION = "Conflict Exception (409)";
 
-    private final String CAUSE;
+    private final String detail;
 
     public DataConflictException(String detail) {
         super(DESCRIPTION + ". " + detail);
-        this.CAUSE = detail;
+        this.detail = detail;
     }
 
     @Override
-    public String getCAUSE() {
-        return CAUSE;
+    public String getDetail(){
+        return detail;
     }
 }

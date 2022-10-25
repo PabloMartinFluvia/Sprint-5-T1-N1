@@ -16,26 +16,15 @@ import java.util.List;
 
 
 @Controller
-//TODO: inform Joan path in plural
 @RequestMapping("/sucursals")// resources should be in path with plural names
-public class SucursalCRUDController {//suggested: work only with SucursalDto
+public class SucursalCRUDController {
 
-    private SucursalCRUDService sucursalService;
+    private final SucursalCRUDService sucursalService;
 
     @Autowired
     public SucursalCRUDController(SucursalCRUDService service) {
         this.sucursalService = service;
     }
-
-    /*
-    Validacions id,
-    Si es fan les requests via web no hi ha possibilitat d'error, però s'implementen per
-    a actuar de tallafocs en cas d'errors o requests errones realitzades des de fora.
-    No es fan a nivell de dto, ja que la restricció és diferent segons un post un put.
-    Tampoc es fan amb anotacions en arguments dels mètodes, ja que les excepcions que es llancen
-    no em convencen.
-    ValidationException or ConstraintValidationException (simple 400)
-     */
 
     @PostMapping("/add")
     public String create(@Valid @ModelAttribute("sucursal") SucursalDto dto,

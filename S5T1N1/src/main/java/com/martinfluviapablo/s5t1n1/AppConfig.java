@@ -19,7 +19,7 @@ public class AppConfig implements WebMvcConfigurer {
         Ja que, proporcionar un model:
               a) No soluciona el problema del path variable segons el valor de l'input (detallat en buscar.html)
               b) La validació de la data proporcionada de la manera típica
-                    ex: @ModelAttribute + @Valid , BindingResult + if(has errors) etc..
+                    ex: @ModelAttribute + @Valid , BindingResult + if has errors, etc.
                  només fa que augmentar el codi innecessàriament, tenint en compte que la restricció
                  es pot posar directament en el html -> <input .... min=1 ... />
          */

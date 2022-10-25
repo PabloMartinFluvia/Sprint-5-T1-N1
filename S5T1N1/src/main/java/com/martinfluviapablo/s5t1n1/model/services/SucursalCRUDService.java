@@ -19,11 +19,11 @@ import java.util.Optional;
 @Service
 public class SucursalCRUDService { //suggested: here conversion Sucursal <-> SucursalDto
 
-    private SucursalRepository repository;
+    private final SucursalRepository repository;
 
-    private UEService ueService;
+    private final UEService ueService;
 
-    private ModelMapper modelMapper;
+    private final ModelMapper modelMapper;
 
     @Autowired
     public SucursalCRUDService(SucursalRepository repository, UEService ueService, ModelMapper modelMapper) {
@@ -38,10 +38,10 @@ public class SucursalCRUDService { //suggested: here conversion Sucursal <-> Suc
         return toDto(repository.save(sucursal));
     }
 
-    /**
+    /*
      * It's not allowed to have many sucursals with same name and country and distinct id
      * If any client tries to do it a DataConflictException is thrown.
-     * @param newSucursal
+     *
      */
     private void checkDataConflict(Sucursal newSucursal){
         //if found old sucursal with same name and country && id distint to new Sucursal -> conflict exception
@@ -53,11 +53,7 @@ public class SucursalCRUDService { //suggested: here conversion Sucursal <-> Suc
             throw new DataConflictException("ERROR: Ja existeix un registre amb nom " + nom + " en el país " + pais);
     }
 
-    /**
-     * If the id of the entity to update is not found throws SucursalNotFoundException
-     * @param dto
-     * @return
-     */
+    // If the id of the entity to update is not found throws SucursalNotFoundException
     public SucursalDto replaceOne(SucursalDto dto){
         Integer id = dto.getPk_SucursalID();
         Sucursal updatedSucursal = repository.findById(id)
@@ -68,15 +64,11 @@ public class SucursalCRUDService { //suggested: here conversion Sucursal <-> Suc
         return toDto(repository.save(updatedSucursal));
     }
 
-    /**
-     * If the id of the entity to update is not found throws SucursalNotFoundException
-     * @param id
-     * @return
-     */
+    // If the id of the entity to update is not found throws SucursalNotFoundException
     public SucursalDto findOne(Integer id){
         return repository.findById(id)
                 .map(this::toDto)
-                .orElseThrow(() -> new SucursalNotFoundException("ERROR: No s'ha trovat cap sucursal amb id: "+id));
+                .orElseThrow(() -> new SucursalNotFoundException("ERROR: No s'ha trobat cap sucursal amb id: "+id));
     }
 
     public List<SucursalDto> findAll(){
@@ -84,10 +76,8 @@ public class SucursalCRUDService { //suggested: here conversion Sucursal <-> Suc
                 .stream().map(this::toDto).toList();
     }
 
-    /**
-     * If id not found it's ok (won't exist an entity with such id)
-     * @param id
-     */
+
+     // If id not found it's ok (won't exist an entity with such id)
     public void deleteOne(Integer id){
         repository.deleteById(id);
     }

@@ -14,38 +14,24 @@ import javax.servlet.http.HttpServletRequest;
 @ControllerAdvice
 public class ExceptionManager {
 
-    /*
-    TODO:
-        Manage DataConflictException
-        Manage SucursalNotFoundException
-        Manage general exception / Critical exception (500)
-        Errors due @Valid wrong should be managed here?
-        Manage wrong url path
-            Manage NoHandlerFoundException {when there's no method to handle that path)
-            *DispatcherServlet must have property throwExceptionIfNoHandlerFound to true
-     */
-
     @ExceptionHandler(SucursalNotFoundException.class)
     public ModelAndView handleSucursalNotFound(CustomException ex){
         ModelAndView mav = new ModelAndView("llista");
-        mav.addObject("inexistent",ex.getCAUSE());
+        mav.addObject("inexistent",ex.getDetail());
         return mav;
     }
 
     @ExceptionHandler({DataConflictException.class, IdException.class})
     public ModelAndView handleDataConflictive(CustomException ex){
         ModelAndView mav = new ModelAndView("customerror");
-        mav.addObject("error",ex.getCAUSE());
+        mav.addObject("error",ex.getDetail());
         return mav;
     }
 
-    /*
-    This exceptions must be handled when are "discovered"
-     */
     @ExceptionHandler(Exception.class)
     public ModelAndView handleCriticalException(HttpServletRequest request, Exception ex){
-        LoggerFactory.getLogger(ExceptionManager.class).error(
-                "Request: "+ request.getRequestURL()+" raised "+ex);
+        String msg = String.format("Request: %s raised %s",request.getRequestURL(),ex);
+        LoggerFactory.getLogger(ExceptionManager.class).info(msg);
         ex.printStackTrace();
         ModelAndView mav = new ModelAndView("customerror");
         mav.addObject("url", request.getRequestURL());

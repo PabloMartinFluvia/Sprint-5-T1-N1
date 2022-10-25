@@ -16,9 +16,9 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class NavigationController {
 
-    private SucursalCRUDService sucursalService;
+    private final SucursalCRUDService sucursalService;
 
-    private UEService ueService;
+    private final UEService ueService;
 
     @Autowired
     public NavigationController(SucursalCRUDService sucursalService, UEService ueService) {
@@ -26,11 +26,9 @@ public class NavigationController {
         this.ueService = ueService;
     }
 
-    /**
-     * For redirect from id passed as parameter to id passed as path variable.
-     * -> See buscar.html
-     * @param id
-     * @return
+    /*
+      For redirect from id passed as parameter to id passed as path variable.
+      -> See buscar.html
      */
     @GetMapping("/buscar/oneId")
     public String searchOne(@RequestParam Integer id){ //query param validated when submitted in form (buscar.html)
