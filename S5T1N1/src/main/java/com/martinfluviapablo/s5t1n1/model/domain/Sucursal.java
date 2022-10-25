@@ -12,7 +12,8 @@ import java.util.Objects;
 @Getter
 @Setter
 @ToString
-@RequiredArgsConstructor //TODO: check @RequiredArgsConstructor is enough
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "sucursals")
 public class Sucursal { // suggested: only used in repository layer

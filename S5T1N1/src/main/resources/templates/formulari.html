@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ca" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Formulari</title>
+</head>
+<body>
+	<h1>Formulari de Sucursals</h1>
+	<!-- using fragments for only make  available diferents actions and methods with the same form structure -->
+	<div th:if="${target == 'new'}">
+		<div th:replace="components/sucursalform
+			:: inputs_sucursal(
+			path='/sucursals/add',
+			verb_http='post')">
+		</div>
+	</div>
+	<div th:if="${target == 'update'}"> <!-- no need to show id, nor country type -->
+		<div  th:replace="components/sucursalform
+			:: inputs_sucursal(
+			path='/sucursals/update',
+			verb_http='put')">
+		</div>
+	</div>
+    <p th:text="${success}?:''"></p>`
+	<a href="/ueMemebrs">Veure el llistat de països membres de la UE</a>
+    <!-- TODO link to getOne/id from sucursal if added, to check data provided -->
+    <!--TODO link to page with UE countries listed -->
+    <footer th:replace="components/footer :: peu_de_pagina"></footer>
+</body>
+</html>

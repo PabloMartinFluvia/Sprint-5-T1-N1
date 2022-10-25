@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>ERROR</title>
+</head>
+<body>
+	<h1>PÀGINA D'ERROR</h1>
+	<p>L'Aplicació ha sofert un error.</p>
+	
+	<p th:text="${error}"></p>
+	
+	<p th:if="${url}">
+		<b>Page:</b> <span th:text="${url}">Page URL</span>
+	</p>
+	
+	<p th:if="${path}">
+		<b>Ruta:</b> <span th:text="${path}"></span>
+	</p>
+	
+	<p th:if="${message}">
+		<b>Details:</b> <span th:text="${message}"></span>
+	</p>
+	
+	<p th:if="${exception}">
+		<b>Exception:</b> <span th:text="${exception}"></span>
+	</p>
+</body>
+</html>

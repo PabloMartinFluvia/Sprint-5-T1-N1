@@ -10,22 +10,22 @@ import java.util.List;
 @Service
 public class UEService {
 
-    private final InfoUE ueMembers;
+    private final InfoUE infoUE;
 
     @Autowired
     public UEService(InfoUE ueMembers) {
-        this.ueMembers = ueMembers;
+        this.infoUE = ueMembers;
     }
 
-    public void setComunitaryInfo(SucursalDto dto){
-        if(ueMembers.isMember(dto.getPaisSucursal())){
+    public void setUeInfo(SucursalDto dto){
+        if(infoUE.isMember(dto.getPaisSucursal())){
             dto.setTipusSucursal("UE");
         }else{
             dto.setTipusSucursal("Fora UE");
         }
     }
 
-    public void setComunitaryInfo(List<SucursalDto> dtos){
-        dtos.forEach(this::setComunitaryInfo);
+    public List<String> findAllUeMembers(){
+        return infoUE.getPaisosSorted();
     }
 }
